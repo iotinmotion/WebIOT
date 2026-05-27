@@ -3,16 +3,16 @@
   "title": "Más de 10 años conectando cosas.",
   "sub": "Una selección de hitos clave en orden cronológico.",
   "milestones": [
-    { "y": "2025", "t": "Grupo Sanatorios", "d": "Botones de paro cardíaco · 300 dispositivos" },
-    { "y": "2025", "t": "Ezeiza", "d": "Conteo de carros · 100 dispositivos" },
-    { "y": "2024", "t": "AYSAM II", "d": "Micro medición de agua · 19.500 medidores" },
-    { "y": "2024", "t": "Tigre II", "d": "Smart City · 500 sensores" },
-    { "y": "2023", "t": "AYSAM I", "d": "Micro medición · 500 medidores" },
-    { "y": "2023", "t": "Lomas de Zamora", "d": "Smart City" },
-    { "y": "2022", "t": "Tigre I", "d": "Smart City · 100 sensores" },
-    { "y": "2021", "t": "Pilar", "d": "Estacionamiento · 1.000 sensores" },
-    { "y": "2021", "t": "Enel", "d": "Telelectura · 30.000 medidores" },
+    { "y": "2025", "t": "Grupo Sanatorios", "d": "Botones de paro cardiorrespiratorio (300 dispositivos)" },
+    { "y": "2025", "t": "Ezeiza", "d": "Medidor de carritos (100 dispositivos)" },
+    { "y": "2024", "t": "AYSAM II", "d": "Micro medición de agua (19.500 medidores)" },
+    { "y": "2024", "t": "Tigre II", "d": "Smart City (500 sensores)" },
+    { "y": "2023", "t": "AYSAM I", "d": "Micro medición de agua (500 medidores)" },
+    { "y": "2023", "t": "Municipalidad de Lomas de Zamora", "d": "Smart City" },
+    { "y": "2022", "t": "Tigre I", "d": "Smart City (100 sensores)" },
+    { "y": "2021", "t": "Pilar", "d": "Estacionamiento medido (1.000 sensores)" },
+    { "y": "2021", "t": "Enel", "d": "Sistema de telelectura (30.000 medidores)" },
     { "y": "2019", "t": "Renault", "d": "Macro medición" },
-    { "y": "2017", "t": "Red LoRaWAN", "d": "5 países · 350 antenas" }
+    { "y": "2017", "t": "Despliegue Red LoRaWAN", "d": "5 países. 350 antenas" }
   ]
 }
