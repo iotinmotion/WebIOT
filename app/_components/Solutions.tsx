@@ -170,10 +170,12 @@ export default function Solutions() {
                     <a href="#contact" style={{ color: "var(--brand-blue-deep)", fontWeight: 900, WebkitTextStroke: "0.4px var(--brand-blue-deep)" }}>
                       {t.solutions.moreInfo}
                     </a>
-                    <a href="#" onClick={(e) => e.preventDefault()}
-                      style={{ color: "var(--brand-orange)", fontWeight: 900, textDecoration: "underline", textUnderlineOffset: 4, WebkitTextStroke: "0.4px var(--brand-orange)" }}>
-                      {t.solutions.downloadPdf}
-                    </a>
+                    {item.pdf && (
+                      <a href={item.pdf} target="_blank" rel="noopener noreferrer"
+                        style={{ color: "var(--brand-orange)", fontWeight: 900, textDecoration: "underline", textUnderlineOffset: 4, WebkitTextStroke: "0.4px var(--brand-orange)" }}>
+                        {t.solutions.downloadPdf}
+                      </a>
+                    )}
                   </div>
                 </div>
                 <div style={{
