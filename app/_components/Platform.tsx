@@ -20,7 +20,7 @@ const MAP_PINS = [
   { x: 30, y: 70, alert: false }, { x: 78, y: 70, alert: false },
 ];
 
-function CountUp({ target = 30000, duration = 2400 }) {
+function CountUp({ target = 22300, duration = 2400 }) {
   const [val, setVal] = useState(0);
   const [started, setStarted] = useState(false);
   const elRef = useRef<HTMLSpanElement>(null);
@@ -180,7 +180,7 @@ export default function Platform() {
               color: "var(--brand-blue-deep)",
               display: "flex", alignItems: "baseline", gap: 8,
             }}>
-              <CountUp target={30000} duration={2400} />
+              <CountUp target={22300} duration={2400} />
               <span style={{ fontSize: "0.4em", color: "var(--brand-orange)", transform: "translateY(-0.25em)" }}>↑</span>
             </div>
             <div style={{ marginTop: 10, fontSize: 17, color: "var(--ink)", fontWeight: 500 }}>

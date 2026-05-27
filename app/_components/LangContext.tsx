@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import es from "@/messages/es.json";
-import en from "@/messages/en.json";
+import es from "@/messages/es";
+import en from "@/messages/en";
 
 type Lang = "es" | "en";
 type Messages = typeof es;

@@ -1,0 +1,15 @@
+{
+  "eyebrow": "News",
+  "title_a": "Latest",
+  "title_b": "News",
+  "sub": "Conferences, new devices, and more.",
+  "cta": "See all our news",
+  "items": [
+    { "id": "internet-day", "cat": "EVENTS", "catKey": "events", "date": "Apr 29, 2026", "t": "Countdown to Internet Day 2026", "d": "We are bringing our lab for live demonstrations focused on four key verticals: Healthcare, Industry, Smart City, Security." },
+    { "id": "isc-west", "cat": "EXHIBITION", "catKey": "exhibition", "date": "Apr 1, 2026", "t": "IOT in Motion at ISC West 2026!", "d": "How will Artificial Intelligence and IoT impact the security of Argentine companies this year?" },
+    { "id": "energy", "cat": "ENERGY EFFICIENCY", "catKey": "energy", "date": "Apr 29, 2026", "t": "Intelligent Monitoring System with LoRaWAN Technology", "d": "How Much Money Is Your Plant Losing Due to Lack of Visibility in Energy Consumption?" },
+    { "id": "biosecure", "cat": "CLINICAL INNOVATION", "catKey": "health", "date": "Apr 29, 2026", "t": "Biosecure Operating Rooms & Cardiac Arrest Response Buttons", "d": "Is Your Healthcare Organization Ready for the Exponential Impact of Digitalization by 2030?" },
+    { "id": "lorawan-coverage", "cat": "NETWORKS", "catKey": "networks", "date": "Mar 15, 2026", "t": "Expanded LoRaWAN coverage to Mendoza & Córdoba", "d": "New antennas in operation: we are now the largest LoRaWAN network in the country, ready for your next deployment." },
+    { "id": "agua-pilar", "cat": "CASE STUDY", "catKey": "case", "date": "Feb 20, 2026", "t": "Pilar cuts water consumption by 12%", "d": "Macro-metering rollout enabled early leak detection and optimized distribution across the network." }
+  ]
+}

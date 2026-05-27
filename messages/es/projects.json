@@ -1,0 +1,95 @@
+{
+  "eyebrow": "Proyectos",
+  "side_h": "Nuestros",
+  "side_b": "Proyectos",
+  "title": "Casos reales en operación.",
+  "sub": "Elegí un área para ver los proyectos que ya están funcionando en campo.",
+  "selectedLabel": "CATEGORÍA SELECCIONADA",
+  "caseLabel": "Caso",
+  "categories": [
+    {
+      "id": "smartcity", "t": "Smart City",
+      "cases": [
+        { "code": "tigre-trafico", "h": "Transformando el Tráfico Inteligentemente", "c": "Municipio de Tigre",
+          "body": [
+            { "text": "El Municipio se enfrentaba a un **doble desafío** que impactaba directamente en la seguridad y la calidad de vida: el **exceso de velocidad** en arterias clave y la **congestión de tráfico** impredecible. La falta de datos exactos impedía una planificación urbana eficiente." },
+            { "text": "Desplegamos un **sistema de monitoreo** de velocidad y conteo de vehículos en puntos estratégicos. Esta tecnología no solo captura el dato, sino que lo transforma en una herramienta de gestión." },
+            { "text": "Al **generar estadísticas precisas** sobre la cantidad y velocidad de los vehículos, el Municipio dejó de basar sus decisiones en suposiciones." },
+            { "text": "Hoy, Tigre posee **planificación urbana proactiva**: pudiendo controlar la congestión vehicular mediante la asignación estratégica de recursos y optimizar la semaforización, garantizando un entorno más seguro y eficiente para todos sus ciudadanos." }
+          ]
+        },
+        { "code": "tigre-hidrico", "h": "Prevención y Gestión Hídrica Inteligente", "c": "Municipio de Tigre",
+          "body": [
+            { "text": "El Municipio enfrentaba un desafío crítico de **seguridad ciudadana y logística urbana**: el **riesgo de inundaciones** por crecidas de ríos y el anegamiento de túneles clave **durante tormentas fuertes**. La falta de información en tiempo real impedía una respuesta preventiva." },
+            { "text": "Desplegamos un **sistema de monitoreo de nivel hídrico** mediante sensores ultrasónicos en puntos estratégicos de cauces y pasos bajo nivel. Esta tecnología transforma la medición en una **herramienta de alerta temprana**." },
+            { "text": "Al generar datos en tiempo real, Defensa Civil y Tránsito dejaron de depender de inspecciones visuales manuales." },
+            { "text": "Hoy, el Municipio posee **gestión de emergencias proactiva**: pudiendo anticipar desbordes, automatizar el cierre preventivo de túneles y optimizar el despliegue de cuadrillas. **Esto garantiza un entorno más seguro y una infraestructura urbana resiliente ante el cambio climático.**" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "health", "t": "Salud",
+      "cases": [
+        { "code": "omint-codeblue", "h": "Optimización de la Respuesta Crítica y Seguridad del Paciente", "c": "Omint",
+          "body": [
+            { "text": "La clínica enfrentaba el desafío de optimizar los tiempos de respuesta en áreas críticas y garantizar una comunicación inmediata en eventos de alta complejidad, como el **Código Azul**. La dependencia de sistemas tradicionales generaba cuellos de botella que podían comprometer la agilidad en la atención de urgencia." },
+            { "text": "Desplegamos un sistema de **comunicación y alerta hospitalaria** que integra **dispositivos de Pánico, Código Azul y Beepers** de alta fiabilidad. Esta tecnología notifica instantáneamente al equipo médico asignado, geolocalizando la emergencia dentro del establecimiento." },
+            { "text": "**Al generar métricas precisas** sobre los tiempos de respuesta, la clínica dejó de basar sus protocolos en percepciones subjetivas." },
+            { "text": "Hoy, la clínica posee **una atención médica proactiva**: pudiendo coordinar quirófanos y equipos de emergencia con precisión absoluta, garantizando un entorno más seguro para el paciente y una operación de alta eficiencia para el personal de salud." }
+          ]
+        },
+        { "code": "omint-env", "h": "Control Ambiental de Precisión y Cumplimiento Normativo", "c": "Grupo Omint",
+          "body": [
+            { "text": "La Clínica enfrentaba el desafío de garantizar condiciones ambientales estrictas en sus **quirófanos y áreas de esterilización**, donde mínimas variaciones de temperatura o humedad pueden comprometer la seguridad del paciente y la viabilidad de insumos médicos críticos." },
+            { "text": "Desplegamos **una red de sensores térmicos y de humedad de alta precisión**. Esta tecnología monitorea los niveles en tiempo real y los transforma en un **historial digital inalterable**, activando alertas instantáneas ante cualquier desvío de los umbrales preestablecidos." },
+            { "text": "**Al generar reportes automáticos** de trazabilidad, el cliente dejó de dedicar horas de su personal a controles manuales propensos a errores." },
+            { "text": "Hoy, el cliente posee un entorno quirúrgico proactivamente seguro: pudiendo garantizar auditorías de calidad exitosas y asegurar que cada intervención se realice bajo las condiciones ambientales óptimas exigidas por los estándares internacionales." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "industry", "t": "Industria",
+      "cases": [
+        { "code": "renault", "h": "Modernización de Red SCADA e Interfaces", "c": "Planta Renault",
+          "body": [
+            { "text": "El cliente contaba con una infraestructura operativa de alta fiabilidad pero tecnológicamente \"ciega\". Sus sistemas de control dependían de **interfaces analógicas aisladas** que requerían supervisión humana constante, generando demoras en la detección de fallas y pérdida de eficiencia operativa." },
+            { "text": "Implementamos una red de **nodos de conversión analógico-digital** que capturan las señales de sensores existentes de presión, flujo de agua y gas y las traducen a protocolos IoT industriales, centralizando toda la telemetría en un **sistema SCADA inteligente**." },
+            { "text": "Al **digitalizar el 100% de las variables críticas**, la empresa dejó de operar mediante inspecciones manuales para pasar a un modelo de **control centralizado y automatizado.**" },
+            { "text": "Hoy, la planta posee una **operación inteligente y conectada**: habiendo eliminado los silos de información, reducido los tiempos de parada por fallas no detectadas y logrado trazabilidad total sin necesidad de reemplazar su maquinaria original." }
+          ]
+        },
+        { "code": "bromteck", "h": "Monitoreo Crítico y Eficiencia Energética", "c": "Bromteck",
+          "body": [
+            { "text": "El cliente enfrentaba el **desafío de supervisar una red distribuida de activos** donde la detección de anomalías dependía de inspecciones físicas periódicas. La **falta de visibilidad en tiempo real** sobre el estado de los transformadores incrementaba el riesgo de fallas catastróficas." },
+            { "text": "Desplegamos un **sistema de control de energía y monitoreo de parámetros críticos en transformadores**, capturando datos sobre carga, temperatura y eficiencia de manera constante, transformándolos en una herramienta de mantenimiento predictivo." },
+            { "text": "Al generar **estadísticas precisas** sobre el comportamiento de cada unidad, Bromteck dejó de basar su mantenimiento en calendarios fijos para pasar a una gestión basada en la condición real del activo." },
+            { "text": "Hoy, Bromteck posee una gestión de infraestructura proactiva: pudiendo prevenir averías antes de que ocurran, optimizar la carga de la red y extender la vida útil de sus equipos." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security", "t": "Seguridad",
+      "cases": [
+        { "code": "lomas-escuelas", "h": "Protección Integral de Entornos Educativos", "c": "Municipio Lomas de Zamora",
+          "body": [
+            { "text": "El Municipio enfrentaba el reto de garantizar la **seguridad en los establecimientos educativos y sus alrededores**, donde la rapidez en la comunicación ante incidentes era vital pero fragmentada. La falta de conexión directa con el centro de monitoreo municipal dificultaba una respuesta inmediata." },
+            { "text": "Desplegamos un **sistema de cámaras** en puntos estratégicos de las escuelas, integrados directamente con el centro de operaciones del Municipio. Esta tecnología transforma cada señal de auxilio en un protocolo de intervención automática." },
+            { "text": "**Al generar datos en tiempo real** sobre los eventos, el Municipio dejó de reaccionar ante los hechos para pasar a una planificación preventiva." },
+            { "text": "Hoy, el Municipio posee **escuelas protegidas proactivamente**: pudiendo reducir drásticamente los tiempos de llegada de patrullas o ambulancias, disuadir actos de vandalismo y brindar tranquilidad a toda la comunidad educativa." }
+          ]
+        },
+        { "code": "ituzaingo", "h": "Fortalecimiento de la Seguridad Participativa", "c": "Municipio de Ituzaingó",
+          "body": [
+            { "text": "El Municipio enfrentaba el desafío de integrar a la comunidad en la prevención del delito de manera efectiva. Los sistemas tradicionales de alarmas barriales eran limitados y funcionaban de forma local." },
+            { "text": "Conectamos el **ecosistema de alarmas vecinales** con el centro de monitoreo del municipio. Esta tecnología transforma cada activación en un evento de emergencia geolocalizado en el Centro de Operaciones Municipal (COM), identificando quién activó la alerta y en qué punto exacto." },
+            { "text": "Al generar **estadísticas precisas** sobre las zonas de mayor activación, el Municipio dejó de **patrullar a ciegas** para basar sus recorridos en **mapas de calor de incidentes reales**." },
+            { "text": "Hoy el Municipio posee una **comunidad protegida proactivamente**: pudiendo coordinar la respuesta de patrullas en segundos, reducir el vandalismo en los barrios y devolver la tranquilidad a los espacios públicos." }
+          ]
+        }
+      ]
+    }
+  ]
+}

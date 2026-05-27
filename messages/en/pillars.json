@@ -1,0 +1,9 @@
+{
+  "eyebrow": "The pillars that define us",
+  "title": "Three principles behind every deployment.",
+  "items": [
+    { "t": "Connectivity & Security", "d": "Our own LoRaWAN network, encrypted communication and an architecture built for critical environments." },
+    { "t": "Efficiency & Environmental Sustainability", "d": "Devices with years of battery life and processes optimized to reduce consumption and waste." },
+    { "t": "SIM Platform", "d": "A single console to manage thousands of sensors: alerts, reports, integrations and APIs." }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "eyebrow": "Solutions",
+  "side_h": "Our",
+  "side_b": "Solutions",
+  "title": "Flexibility and expertise, tailored to your needs.",
+  "sub": "Pick an area and explore the solutions already running in the field.",
+  "selectedLabel": "SELECTED CATEGORY",
+  "moreInfo": "+ MORE INFO",
+  "downloadPdf": "DOWNLOAD PDF",
+  "otherTitle": "Other solutions",
+  "categories": [
+    {
+      "id": "networks", "t": "Networks", "short": "NET",
+      "items": [
+        { "id": "lorawan", "t": "LoRaWAN Network", "d": "LoRaWAN™ is a network protocol designed specifically for the Internet of Things (IoT). It wirelessly connects low-power devices and sensors over long distances, with multi-year battery life and kilometers of range. IoT in Motion operates the largest LoRaWAN network in Argentina, with a presence across Latin America.", "tone": "blue" }
+      ],
+      "other": []
+    },
+    {
+      "id": "smartcity", "t": "Smart City", "short": "CITY",
+      "items": [
+        { "id": "traffic", "t": "Traffic Flow Monitoring", "d": "A traffic monitoring solution that uses inductive loops to record vehicle speeds and counts over the long term. It sends measurements to our SIM platform for online status visualization and historical report generation.", "tone": "blue" },
+        { "id": "levels", "t": "Liquid and Solid Level Monitoring", "d": "A solution capable of monitoring the state of liquid or solid tanks, applicable to different use cases. It uses an ultrasonic sensor to measure fill levels, transmitting alerts and configurable email notifications.", "tone": "teal" },
+        { "id": "parking", "t": "Smart Parking", "d": "Devices placed on the street to determine whether a vehicle is parked in that zone. They monitor restricted spaces (ambulances, fire trucks, disabled access) or control dwell time, applicable to loading/unloading zones, public or private parking, and tourist areas.", "tone": "blue" },
+        { "id": "climate", "t": "Efficient Climate Monitoring", "d": "Integrates a weather station with a communication system that transmits all measurements over long distances. Measures Lumens, Temperature, Humidity, Wind Speed and Direction, and Atmospheric Pressure, communicating with our SIM platform for visualization and reports.", "tone": "teal" },
+        { "id": "gas", "t": "Carbon Monoxide and Methane Gas Monitoring", "d": "A solution capable of monitoring dangerous gas concentrations such as Carbon Monoxide and Methane in enclosed spaces (sensor certified by ENARGAS). Reports are transmitted using an encrypted protocol, ensuring information can only be read by the destination application.", "tone": "blue" }
+      ],
+      "other": ["Flood Alert", "People Digital Footprint", "People Flow Dynamics", "Residential Consumption Monitoring", "Efficient Lighting", "Efficient Traffic Light Management", "Smart Waste Container Fill Level Management"]
+    },
+    {
+      "id": "health", "t": "Health", "short": "MED",
+      "items": [
+        { "id": "cardiac", "t": "Vital Response Alert for Cardiac Arrest", "d": "A solution that triggers an alert with the press of a button, indicating a Code Blue event. It sends the alert to the Pager, WhatsApp, or Telegram of the assigned staff to address the emergency immediately and in a coordinated manner.", "tone": "blue" }
+      ],
+      "other": ["Surgical Environment Monitoring", "Efficient Hospital Communication System", "Hospital Air Quality Monitoring", "Efficient Emergency Alert for Clinics, Sanitariums and Hospitals"]
+    },
+    {
+      "id": "industry", "t": "Industry", "short": "IND",
+      "items": [
+        { "id": "optimize", "t": "Energy Efficiency Monitoring", "d": "An Electrical Energy monitoring module that continuously tracks the state of the electrical grid, temperature, and cabinet door status. Its simple installation makes it a key ally for reporting electrical consumption and reducing operation and maintenance times. Presented in an IP67 waterproof enclosure.", "tone": "blue" }
+      ],
+      "other": ["Universal Link Monitoring", "Electrical Integrity Monitoring in Transformers", "Operational Efficiency Bridge in Machinery and SCADA Equipment", "Intelligent Flow Monitoring"]
+    },
+    {
+      "id": "security", "t": "Security", "short": "SEC",
+      "items": [
+        { "id": "gas-sec", "t": "Efficient Surveillance Monitoring", "d": "A solution that combines communication technology with security devices to act as a control and alert network. It allows remote monitoring of surveillance cameras, detection of suspicious events and movements, and management of auxiliary sensors such as temperature, door opening, and humidity.", "tone": "blue" }
+      ],
+      "other": ["Community Security Monitor", "Safe School Environment", "Citizen Monitoring Point", "Immediate Alert"]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "eyebrow": "Novedades",
+  "title_a": "Últimas",
+  "title_b": "novedades",
+  "sub": "Conferencias, nuevos dispositivos y más.",
+  "cta": "Ver todas nuestras novedades",
+  "items": [
+    { "id": "internet-day", "cat": "EVENTOS", "catKey": "events", "date": "29 Abr 2026", "t": "Cuenta regresiva para Internet Day 2026", "d": "Estamos preparando nuestro laboratorio para demostraciones en vivo enfocadas en cuatro verticales clave: Salud, Industria, Smart City y Seguridad." },
+    { "id": "isc-west", "cat": "EXHIBICIÓN", "catKey": "exhibition", "date": "1 Abr 2026", "t": "¡IOT in Motion en ISC West 2026!", "d": "¿Cómo impactarán la Inteligencia Artificial y el IoT en la seguridad de las empresas argentinas este año?" },
+    { "id": "energy", "cat": "EFICIENCIA ENERGÉTICA", "catKey": "energy", "date": "29 Abr 2026", "t": "Sistema de Monitoreo Inteligente con tecnología LoRaWAN", "d": "¿Cuánto dinero está perdiendo tu planta por falta de visibilidad en el consumo energético?" },
+    { "id": "biosecure", "cat": "INNOVACIÓN CLÍNICA", "catKey": "health", "date": "29 Abr 2026", "t": "Quirófanos Bioseguros y Botones de Paro Cardíaco", "d": "¿Tu organización de salud está preparada para el impacto exponencial de la digitalización hacia 2030?" },
+    { "id": "lorawan-coverage", "cat": "REDES", "catKey": "networks", "date": "15 Mar 2026", "t": "Ampliamos cobertura LoRaWAN a Mendoza y Córdoba", "d": "Nuevas antenas en operación: ya somos la red LoRaWAN más extensa del país, lista para tu próximo despliegue." },
+    { "id": "agua-pilar", "cat": "CASOS DE ÉXITO", "catKey": "case", "date": "20 Feb 2026", "t": "Pilar reduce un 12% el consumo de agua", "d": "El despliegue de macromedición permitió detectar fugas tempranas y optimizar la distribución del recurso." }
+  ]
+}

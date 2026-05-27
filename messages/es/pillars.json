@@ -1,0 +1,9 @@
+{
+  "eyebrow": "Los pilares que nos definen",
+  "title": "Tres principios que sostienen cada despliegue.",
+  "items": [
+    { "t": "Conectividad y Seguridad", "d": "Red LoRaWAN propia, comunicación encriptada y arquitectura preparada para ambientes críticos." },
+    { "t": "Eficiencia y Sustentabilidad Ambiental", "d": "Dispositivos con años de batería y procesos optimizados para reducir consumo y residuos." },
+    { "t": "Plataforma SIM", "d": "Una sola consola para administrar miles de sensores: alertas, reportes, integraciones y APIs." }
+  ]
+}

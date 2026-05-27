@@ -1,0 +1,23 @@
+{
+  "eyebrow": "Contacto",
+  "title": "¿Tenés una idea conectada?",
+  "sub": "Escribinos por WhatsApp o completá el formulario y te respondemos a la brevedad.",
+  "whatsapp_h": "WhatsApp",
+  "whatsapp_d": "Mensaje directo · Coordinamos rápido por chat.",
+  "whatsapp_cta": "Contactar por WhatsApp",
+  "email_h": "Completá el formulario",
+  "email_d": "Completá el formulario y te contactamos a la brevedad.",
+  "email": "Email",
+  "subject": "Asunto",
+  "area": "Área de interés",
+  "area_opts": ["Seleccioná una opción", "Smart City", "Industria", "Salud", "Seguridad", "Redes / LoRaWAN", "Otro"],
+  "message": "Mensaje",
+  "message_ph": "Escribí tu mensaje...",
+  "send": "Enviar",
+  "sent": "¡Mensaje enviado! Te respondemos a la brevedad.",
+  "privacy": "Respondemos rápido y protegemos tus datos.",
+  "location_h": "Ubicación",
+  "location": "B1678AMO Caseros, Provincia de Buenos Aires",
+  "phone": "+54 911 5164 0000",
+  "mail": "contacto@iotinmotion.com.ar"
+}

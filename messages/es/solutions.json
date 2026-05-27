@@ -1,0 +1,52 @@
+{
+  "eyebrow": "Soluciones",
+  "side_h": "Nuestras",
+  "side_b": "Soluciones",
+  "title": "Flexibilidad y experiencia, hechas a tu medida.",
+  "sub": "Elegí un área y explorá las soluciones que ya operan en campo.",
+  "selectedLabel": "CATEGORÍA SELECCIONADA",
+  "moreInfo": "+ MÁS INFO",
+  "downloadPdf": "DESCARGAR PDF",
+  "otherTitle": "Otras soluciones",
+  "categories": [
+    {
+      "id": "networks", "t": "Redes", "short": "NET",
+      "items": [
+        { "id": "lorawan", "t": "Red LoRaWAN", "d": "LoRaWAN™ es un protocolo de red diseñado específicamente para Internet de las Cosas (IoT). Conecta de forma inalámbrica dispositivos y sensores de bajo consumo a grandes distancias, con años de batería y varios kilómetros de alcance. En IoT in Motion tenemos la Red LoRaWAN más grande de Argentina con presencia en América Latina.", "tone": "blue" }
+      ],
+      "other": []
+    },
+    {
+      "id": "smartcity", "t": "Smart City", "short": "CITY",
+      "items": [
+        { "id": "traffic", "t": "Monitoreo de flujo Vial", "d": "Solución de monitoreo de tráfico que utiliza lazos inductivos para registrar las velocidades y conteo de vehículos a largo plazo. Permite enviar mediciones a nuestra plataforma SIM, visualizar el estado en línea y generar informes históricos.", "tone": "blue" },
+        { "id": "levels", "t": "Monitoreo de Nivel de líquidos y sólidos", "d": "Solución capaz de monitorear el estado de depósitos de líquidos o sólidos aplicable a diferentes casos de uso. Cuenta con un sensor ultrasónico que mide el nivel de llenado, transmitiendo alertas y notificaciones por email configurables.", "tone": "teal" },
+        { "id": "parking", "t": "Estacionamiento inteligente", "d": "Dispositivos que se colocan en la calle para determinar si un vehículo está posicionado en esa zona. Permiten controlar espacios prohibidos (ambulancias, bomberos, discapacitados) o el tiempo de detención, aplicable en zonas de carga/descarga, estacionamiento público o privado y zonas turísticas.", "tone": "blue" },
+        { "id": "climate", "t": "Monitoreo climático eficiente", "d": "Integra una central meteorológica con un sistema de comunicación que transmite todas las mediciones a largas distancias. Mide Lúmenes, Temperatura, Humedad, Velocidad y Dirección del viento y Presión Atmosférica, comunicándose con nuestra plataforma SIM para visualización y reportes.", "tone": "teal" },
+        { "id": "gas", "t": "Monitoreo de nivel de gases como Monóxido y Metano", "d": "Solución capaz de monitorear la concentración de gases peligrosos como el Monóxido y el Metano en espacios cerrados (sensor certificado por ENARGAS). Los reportes se transmiten mediante protocolo encriptado, garantizando que la información solo pueda ser leída por la aplicación de destino.", "tone": "blue" }
+      ],
+      "other": ["Alerta Hídrica", "Huella Digital de personas", "Dinámica de Afluencia de personas", "Monitoreo de Consumo Residencial", "Iluminación eficiente", "Gestión eficiente de semáforos", "Gestión inteligente de llenado de residuos en contenedores"]
+    },
+    {
+      "id": "health", "t": "Salud", "short": "MED",
+      "items": [
+        { "id": "cardiac", "t": "Alerta de Respuesta Vital ante paro cardio respiratorio", "d": "Solución que permite dar una alerta con solo presionar un botón, indicando que hay un Código Azul. Envía la alerta al Pager, WhatsApp o Telegram del personal asignado para atender la urgencia de forma inmediata y coordinada.", "tone": "blue" }
+      ],
+      "other": ["Monitoreo de ambiente Quirúrgico", "Sistema de Comunicación eficiente Hospitalaria", "Monitoreo de calidad de Aire hospitalario", "Alerta de auxilio eficiente para clínicas, sanatorios y hospitales"]
+    },
+    {
+      "id": "industry", "t": "Industria", "short": "IND",
+      "items": [
+        { "id": "optimize", "t": "Monitoreo de Eficiencia Energética", "d": "Módulo de monitoreo de Energía Eléctrica que controla continuamente el estado de la red eléctrica, temperatura y apertura del gabinete. Su sencilla instalación lo convierte en un aliado para comunicar el consumo eléctrico, reduciendo tiempos de operación y mantenimiento. Presentado en caja estanca IP67.", "tone": "blue" }
+      ],
+      "other": ["Monitoreo de Enlace Universal", "Monitoreo de integridad eléctrica en transformadores", "Puente de eficiencia operativa en Maquinaria y equipamiento SCADA", "Monitoreo inteligente de caudal"]
+    },
+    {
+      "id": "security", "t": "Seguridad", "short": "SEC",
+      "items": [
+        { "id": "gas-sec", "t": "Monitoreo de Vigilancia Eficiente", "d": "Solución que combina tecnología de comunicación con dispositivos de seguridad para actuar como red de control y alerta. Permite monitorear remotamente cámaras de vigilancia, detectar eventos, movimientos o presencias sospechosas, y gestionar sensores auxiliares como temperatura, apertura de puertas y humedad.", "tone": "blue" }
+      ],
+      "other": ["Monitor de Seguridad Comunitaria", "Entorno Escolar Seguro", "Punto de Monitoreo Ciudadano", "Alerta Inmediata"]
+    }
+  ]
+}

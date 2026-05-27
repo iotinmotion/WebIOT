@@ -1,0 +1,18 @@
+{
+  "eyebrow": "Our evolution",
+  "title": "Over 10 years connecting things.",
+  "sub": "A selection of key milestones, in chronological order.",
+  "milestones": [
+    { "y": "2025", "t": "Grupo Sanatorios", "d": "Cardiac arrest buttons · 300 devices" },
+    { "y": "2025", "t": "Ezeiza", "d": "Cart counter · 100 devices" },
+    { "y": "2024", "t": "AYSAM II", "d": "Water micro-metering · 19,500 meters" },
+    { "y": "2024", "t": "Tigre II", "d": "Smart City · 500 sensors" },
+    { "y": "2023", "t": "AYSAM I", "d": "Micro-metering · 500 meters" },
+    { "y": "2023", "t": "Lomas de Zamora", "d": "Smart City" },
+    { "y": "2022", "t": "Tigre I", "d": "Smart City · 100 sensors" },
+    { "y": "2021", "t": "Pilar", "d": "Metered parking · 1,000 sensors" },
+    { "y": "2021", "t": "Enel", "d": "Remote meter reading · 30,000 meters" },
+    { "y": "2019", "t": "Renault", "d": "Macro metering" },
+    { "y": "2017", "t": "LoRaWAN Network", "d": "5 countries · 350 antennas" }
+  ]
+}

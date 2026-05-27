@@ -86,6 +86,56 @@ function CaseVisual({ code }: { code: string }) {
         </svg>
       ),
     },
+    "tigre-trafico": {
+      alert: "TRÁFICO",
+      icon: (
+        <svg width="48%" height="48%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <rect x="2" y="7" width="20" height="10" rx="1" />
+          <circle cx="6" cy="17" r="2" fill="currentColor" />
+          <circle cx="18" cy="17" r="2" fill="currentColor" />
+          <path d="M2 11h20M6 11V7l3-3h6l3 3v4" />
+        </svg>
+      ),
+    },
+    "tigre-hidrico": {
+      alert: "NIVEL HÍDRICO",
+      icon: (
+        <svg width="42%" height="42%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path d="M3 14a3 3 0 016 0 3 3 0 016 0 3 3 0 016 0" />
+          <path d="M3 19a3 3 0 016 0 3 3 0 016 0 3 3 0 016 0" />
+          <path d="M12 3v7" />
+          <path d="M9 7l3-4 3 4" />
+        </svg>
+      ),
+    },
+    bromteck: {
+      alert: "ENERGÍA",
+      icon: (
+        <svg width="40%" height="40%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <rect x="4" y="6" width="16" height="12" rx="1" />
+          <path d="M8 6V4M16 6V4M8 18v2M16 18v2" />
+          <path d="M9 12l2 2 4-5" />
+        </svg>
+      ),
+    },
+    "lomas-escuelas": {
+      alert: "ESCUELAS",
+      icon: (
+        <svg width="42%" height="42%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path d="M3 10l9-7 9 7v11H3V10z" />
+          <path d="M9 21V12h6v9" />
+        </svg>
+      ),
+    },
+    ituzaingo: {
+      alert: "COMUNIDAD",
+      icon: (
+        <svg width="42%" height="42%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 01-3.46 0" />
+        </svg>
+      ),
+    },
   };
 
   const cfg = configs[code] || { alert: "CASE", icon: <span style={{ fontSize: "3rem" }}>⚡</span> };
@@ -226,7 +276,7 @@ export default function Projects() {
                 background: "var(--bg-card)", border: "1px solid var(--line)",
                 borderRadius: 20, padding: "32px 36px",
                 display: "grid", gridTemplateColumns: "1fr 300px",
-                gap: 36, alignItems: "start",
+                gap: 36, alignItems: "center",
                 transition: "border-color 0.25s var(--ease-smooth)",
               }}>
                 <div>
