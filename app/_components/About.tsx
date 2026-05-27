@@ -22,9 +22,8 @@ export default function About() {
         }}>
           <div className="reveal">
             {[t.about.p1, t.about.p2, t.about.p3, t.about.p4].map((p, i) => (
-              <p key={i} style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.65, margin: "0 0 18px" }}>
-                {p}
-              </p>
+              <p key={i} style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.65, margin: "0 0 18px" }}
+                dangerouslySetInnerHTML={{ __html: p }} />
             ))}
           </div>
 
@@ -32,31 +31,9 @@ export default function About() {
             aspectRatio: "4 / 5",
             borderRadius: 22, overflow: "hidden",
             position: "relative",
-            background: "linear-gradient(140deg, var(--brand-blue-deep), var(--brand-blue-mid))",
             border: "1px solid var(--line)",
           }}>
-            {/* Diagonal stripes */}
-            <div style={{
-              position: "absolute", inset: 0,
-              background: "repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 24px, transparent 24px, transparent 48px)",
-            }} />
-            {/* Caption */}
-            <span style={{
-              position: "absolute", bottom: 16, left: 16,
-              fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
-              fontSize: 10, letterSpacing: "0.18em",
-              color: "rgba(255,255,255,0.55)",
-              textTransform: "uppercase",
-            }}>TEAM PHOTO</span>
-            {/* Logo badge */}
-            <div style={{
-              position: "absolute", bottom: 24, right: 24,
-              width: 80, height: 80, borderRadius: "50%",
-              background: "rgba(255,255,255,0.94)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}>
-              <Image src="/logo.png" alt="IOT in Motion" width={60} height={60} style={{ width: 60, height: "auto" }} />
-            </div>
+            <Image src="/team.png" alt="IOT in Motion team" fill style={{ objectFit: "cover" }} />
           </div>
         </div>
       </div>
