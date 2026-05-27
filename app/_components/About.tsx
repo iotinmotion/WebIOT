@@ -17,7 +17,7 @@ export default function About() {
 
         <div className="about-grid-responsive" style={{
           display: "grid",
-          gridTemplateColumns: "1.1fr 1fr",
+          gridTemplateColumns: "1.6fr 1fr",
           gap: 80, alignItems: "start",
         }}>
           <div className="reveal">
