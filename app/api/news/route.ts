@@ -21,7 +21,7 @@ export async function GET() {
   try {
     const db = await getDb();
     const docs = await db
-      .collection("novedades")
+      .collection("novedads")
       .find({})
       .sort({ order: 1, date: -1 })
       .toArray();
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
   try {
     const db = await getDb();
     const body = await req.json();
-    const result = await db.collection("novedades").insertOne({
+    const result = await db.collection("novedads").insertOne({
       title_es: body.title_es,
       title_en: body.title_en,
       summary_es: body.summary_es,

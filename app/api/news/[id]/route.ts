@@ -27,7 +27,7 @@ export async function PUT(
     if (body.date) update.date = new Date(body.date);
     if (body.imagenId) update.images = [new ObjectId(body.imagenId)];
     await db
-      .collection("novedades")
+      .collection("novedads")
       .updateOne({ _id: new ObjectId(params.id) }, { $set: update });
     return NextResponse.json({ ok: true });
   } catch {
@@ -43,7 +43,7 @@ export async function DELETE(
   try {
     const db = await getDb();
     await db
-      .collection("novedades")
+      .collection("novedads")
       .deleteOne({ _id: new ObjectId(params.id) });
     return NextResponse.json({ ok: true });
   } catch {
