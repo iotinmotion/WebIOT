@@ -65,8 +65,8 @@ export default function Footer() {
               color: "var(--brand-teal)", margin: "0 0 14px", fontWeight: 500,
             }}>{t.footer.follow}</h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-              <li><a href="#" style={{ transition: "color 0.2s" }}>LinkedIn</a></li>
-              <li><a href="#" style={{ transition: "color 0.2s" }}>Instagram</a></li>
+              <li><a href="https://ar.linkedin.com/company/iot-in-motion" target="_blank" rel="noopener noreferrer" style={{ transition: "color 0.2s" }}>LinkedIn</a></li>
+              <li><a href="https://www.instagram.com/iotinmotion.com.ar/" target="_blank" rel="noopener noreferrer" style={{ transition: "color 0.2s" }}>Instagram</a></li>
             </ul>
           </div>
         </div>
