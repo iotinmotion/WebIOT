@@ -110,9 +110,73 @@ function adminFetch(url: string, opts: RequestInit = {}) {
   });
 }
 
+/* ─── confirm modal ──────────────────────────────────────── */
+function ConfirmModal({ message, confirmLabel, cancelLabel, onConfirm, onCancel }: {
+  message: string; confirmLabel: string; cancelLabel: string;
+  onConfirm: () => void; onCancel: () => void;
+}) {
+  return (
+    <div
+      onClick={onCancel}
+      style={{
+        position: "fixed", inset: 0, zIndex: 9999,
+        background: "rgba(0,0,0,0.45)", backdropFilter: "blur(4px)",
+        display: "flex", alignItems: "center", justifyContent: "center", padding: 24,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "var(--bg-card)", borderRadius: 16,
+          border: "1px solid var(--line)",
+          padding: "28px 32px", maxWidth: 360, width: "100%",
+          display: "flex", flexDirection: "column", gap: 20,
+        }}
+      >
+        <p style={{ margin: 0, fontSize: 15, color: "var(--ink)", fontWeight: 500, lineHeight: 1.5 }}>
+          {message}
+        </p>
+        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
+          <button onClick={onCancel} style={secondaryBtn}>{cancelLabel}</button>
+          <button onClick={onConfirm} style={{ ...primaryBtn, background: "#c0392b" }}>{confirmLabel}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function useConfirm(ui: { delete: string; cancel: string }) {
+  const [state, setState] = useState<{
+    message: string; onConfirm: () => void; onCancel: () => void;
+  } | null>(null);
+
+  function prompt(message: string): Promise<boolean> {
+    return new Promise((resolve) => {
+      setState({
+        message,
+        onConfirm: () => { resolve(true); setState(null); },
+        onCancel: () => { resolve(false); setState(null); },
+      });
+    });
+  }
+
+  const modal = state ? (
+    <ConfirmModal
+      message={state.message}
+      confirmLabel={ui.delete}
+      cancelLabel={ui.cancel}
+      onConfirm={state.onConfirm}
+      onCancel={state.onCancel}
+    />
+  ) : null;
+
+  return { prompt, modal };
+}
+
 /* ─── sub-components ─────────────────────────────────────── */
 function ClientsTab({ pw, lang }: { pw: string; lang: Lang }) {
   const ui = uiText[lang];
+  const { prompt: askConfirm, modal: confirmModal } = useConfirm(ui);
   const [clients, setClients] = useState<Cliente[]>([]);
   const [nombre, setNombre] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -155,7 +219,8 @@ function ClientsTab({ pw, lang }: { pw: string; lang: Lang }) {
   }
 
   async function deleteClient(id: string) {
-    if (!confirm(ui.deleteClientConfirm)) return;
+    const ok = await askConfirm(ui.deleteClientConfirm);
+    if (!ok) return;
     await adminFetch(`/api/clients/${id}`, { method: "DELETE" });
     load();
   }
@@ -289,12 +354,14 @@ function ClientsTab({ pw, lang }: { pw: string; lang: Lang }) {
           </div>
         ))}
       </div>
+      {confirmModal}
     </div>
   );
 }
 
 function NewsTab({ pw, lang }: { pw: string; lang: Lang }) {
   const ui = uiText[lang];
+  const { prompt: askConfirm, modal: confirmModal } = useConfirm(ui);
   const [items, setItems] = useState<NewsItem[]>([]);
   const [form, setForm] = useState<NewsForm | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -358,7 +425,8 @@ function NewsTab({ pw, lang }: { pw: string; lang: Lang }) {
   }
 
   async function del(id: string) {
-    if (!confirm(ui.deleteNewsConfirm)) return;
+    const ok = await askConfirm(ui.deleteNewsConfirm);
+    if (!ok) return;
     await adminFetch(`/api/news/${id}`, { method: "DELETE" });
     load();
   }
@@ -425,13 +493,18 @@ function NewsTab({ pw, lang }: { pw: string; lang: Lang }) {
           <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
             <button onClick={save} style={primaryBtn}>{ui.save}</button>
             <button onClick={() => { setForm(null); setPreview(null); }} style={secondaryBtn}>{ui.cancel}</button>
+            {form._id && (
+              <button onClick={async () => { await del(form._id!); setForm(null); setPreview(null); }} style={{ ...secondaryBtn, color: "#c0392b", marginLeft: "auto" }}>
+                {ui.delete}
+              </button>
+            )}
           </div>
         </div>
       )}
 
       {/* List */}
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {items.map((n) => (
+        {items.filter((n) => n._id !== form?._id).map((n) => (
           <div key={n._id} style={{ ...cardStyle, display: "flex", gap: 14, alignItems: "center" }}>
             <div style={{ width: 80, height: 50, position: "relative", borderRadius: 8, overflow: "hidden", flexShrink: 0, background: "var(--bg-soft)" }}>
               {n.imagenId
@@ -454,6 +527,7 @@ function NewsTab({ pw, lang }: { pw: string; lang: Lang }) {
           </div>
         ))}
       </div>
+      {confirmModal}
     </div>
   );
 }
