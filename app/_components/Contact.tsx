@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 
@@ -76,31 +77,15 @@ export default function Contact() {
             <div style={{
               marginTop: 18, aspectRatio: "3 / 2",
               borderRadius: 14, overflow: "hidden", position: "relative",
-              background: "linear-gradient(180deg, oklch(0.95 0.02 80) 0%, oklch(0.92 0.025 75) 100%)",
               border: "1px solid var(--line)",
             }}>
-              <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 100 100" preserveAspectRatio="none">
-                <rect width="100" height="100" fill="oklch(0.95 0.025 80)" />
-                <path d="M 0 38 L 100 36" stroke="oklch(0.85 0.04 50)" strokeWidth="2" />
-                <path d="M 0 56 L 100 54" stroke="oklch(0.85 0.04 50)" strokeWidth="2.4" />
-                <path d="M 0 78 L 100 76" stroke="oklch(0.88 0.03 60)" strokeWidth="1.5" />
-                <path d="M 18 0 L 22 100" stroke="oklch(0.88 0.03 60)" strokeWidth="1.5" />
-                <path d="M 48 0 L 52 100" stroke="oklch(0.85 0.04 50)" strokeWidth="2" />
-                <path d="M 76 0 L 80 100" stroke="oklch(0.88 0.03 60)" strokeWidth="1.5" />
-                <rect x="8" y="14" width="14" height="10" fill="oklch(0.92 0.02 70)" />
-                <rect x="58" y="40" width="14" height="10" fill="oklch(0.92 0.02 70)" />
-                <rect x="28" y="62" width="16" height="10" fill="oklch(0.92 0.02 70)" />
-                <text x="32" y="44" fontFamily="monospace" fontSize="3.2" fill="oklch(0.5 0.04 50)">Caseros</text>
-                <text x="56" y="62" fontFamily="monospace" fontSize="2.6" fill="oklch(0.55 0.04 50)">Av. Mitre</text>
-              </svg>
-              {/* Pin */}
-              <div style={{
-                position: "absolute", top: "38%", left: "32%",
-                width: 28, height: 28, borderRadius: "50%",
-                background: "var(--brand-orange)", border: "3px solid white",
-                boxShadow: "0 8px 18px rgba(227,76,44,0.4)",
-                transform: "translate(-50%, -100%)", zIndex: 2,
-              }} />
+              <Image
+                src="/zona.png"
+                alt="Zona de cobertura"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 880px) 100vw, 50vw"
+              />
             </div>
 
             {/* Location info */}

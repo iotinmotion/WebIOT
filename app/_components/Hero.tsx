@@ -2,7 +2,7 @@
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 
-const TAGS = "LoRaWAN · NB-IoT · 4G · MQTT · ENARGAS · Cloud · IA · API · Edge · SIGFOX · LTE-M · Telemetría · Agro 4.0 · Smart City".split(" · ");
+const TAGS = "Smart City · LoRaWAN · Connectivity · IOT · Cloud · CONTROL · Buenos Aires · IA · SIM · Efficiency · Smart City · LoRaWAN · Connectivity · IOT · Cloud · CONTROL · Buenos Aires · IA · SIM · Efficiency".split(" · ");
 
 function HeroVisual() {
   return (
