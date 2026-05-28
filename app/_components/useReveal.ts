@@ -14,7 +14,16 @@ export function useReveal(): React.RefObject<any> {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("in");
-            io.unobserve(e.target);
+            e.target.classList.remove("out-above");
+          } else {
+            e.target.classList.remove("in");
+            if (e.boundingClientRect.top < 0) {
+              // Element scrolled above viewport — exit upward
+              e.target.classList.add("out-above");
+            } else {
+              // Element below viewport — reset to slide-in-from-below state
+              e.target.classList.remove("out-above");
+            }
           }
         });
       },
