@@ -173,11 +173,13 @@ export default function News() {
                           }}>{formatDate(n.fecha, lang)}</span>
                         </div>
                         <h3 style={{
-                          fontSize: 18, fontWeight: 900, letterSpacing: "-0.015em", lineHeight: 1.25,
+                          fontSize: 18, fontWeight: 600, letterSpacing: "-0.015em", lineHeight: 1.25,
                           margin: "4px 0 0", color: "var(--brand-blue-deep)",
-                          WebkitTextStroke: "0.4px var(--brand-blue-deep)",
                         }}>{pick(n.titulo, lang)}</h3>
-                        <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0 }}>
+                        <p style={{
+                          fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0,
+                          fontWeight: 700, WebkitTextStroke: "0.3px var(--ink-soft)",
+                        }}>
                           {pick(n.descripcion, lang)}
                         </p>
                         <a href={n.link || "#"} target={n.link ? "_blank" : undefined} rel="noopener noreferrer" style={{
