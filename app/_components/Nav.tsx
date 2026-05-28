@@ -88,7 +88,9 @@ export default function Nav() {
         {/* Right: lang toggle + CTA */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
           <a
-            href="#contact"
+            href="https://sim.iotinmotion.com.ar/#/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-pill"
             style={{
               background: "white", color: "var(--brand-blue-deep)",
