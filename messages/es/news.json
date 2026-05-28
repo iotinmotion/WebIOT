@@ -3,7 +3,7 @@
   "title_a": "Últimas",
   "title_b": "novedades",
   "sub": "Conferencias, nuevos dispositivos y más.",
-  "cta": "Ver todas nuestras novedades",
+  "cta": "Leer más",
   "items": [
     { "id": "internet-day", "cat": "EVENTOS", "catKey": "events", "date": "29 Abr 2026", "t": "Cuenta regresiva para Internet Day 2026", "d": "Estamos preparando nuestro laboratorio para demostraciones en vivo enfocadas en cuatro verticales clave: Salud, Industria, Smart City y Seguridad." },
     { "id": "isc-west", "cat": "EXHIBICIÓN", "catKey": "exhibition", "date": "1 Abr 2026", "t": "¡IOT in Motion en ISC West 2026!", "d": "¿Cómo impactarán la Inteligencia Artificial y el IoT en la seguridad de las empresas argentinas este año?" },
