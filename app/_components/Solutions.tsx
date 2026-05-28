@@ -1,8 +1,21 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import PdfModal from "./PdfModal";
+
+const SOL_IMAGES: Record<string, string> = {
+  lorawan:    "/images/soluciones/redes/redes.png",
+  traffic:    "/images/soluciones/smart-city/contador-transito.png",
+  levels:     "/images/soluciones/smart-city/sensor-nivel.png",
+  parking:    "/images/soluciones/smart-city/sensor-estacionamiento.png",
+  climate:    "/images/soluciones/smart-city/estacion-meteorologica.png",
+  gas:        "/images/soluciones/smart-city/estacion-monoxido-metano.png",
+  cardiac:    "/images/soluciones/salud/button.png",
+  optimize:   "/images/soluciones/industria/monitoreo-energia.png",
+  "gas-sec":  "/images/soluciones/seguridad/camaras1.png",
+};
 
 function SolIcon({ id }: { id: string }) {
   const paths: Record<string, React.ReactNode> = {
@@ -186,24 +199,19 @@ export default function Solutions() {
                 <div style={{
                   order: i % 2 === 0 ? 2 : 1,
                   position: "relative", aspectRatio: "4 / 3", borderRadius: 14, overflow: "hidden",
-                  background: item.tone === "teal"
-                    ? "linear-gradient(135deg, var(--brand-teal), var(--brand-blue-mid))"
-                    : "linear-gradient(135deg, var(--brand-blue-deep), var(--brand-blue-mid))",
+                  background: "var(--bg-soft)",
                 }}>
-                  <div style={{
-                    position: "absolute", inset: 0,
-                    backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
-                    backgroundSize: "20px 20px",
-                    maskImage: "radial-gradient(ellipse at center, black 40%, transparent 90%)",
-                    WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 90%)",
-                  }} />
-                  <SolIcon id={item.id} />
-                  <span style={{
-                    position: "absolute", bottom: 10, left: 12,
-                    fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
-                    fontSize: 9, letterSpacing: "0.18em",
-                    color: "rgba(255,255,255,0.7)", textTransform: "uppercase",
-                  }}>{item.id.toUpperCase()}</span>
+                  {SOL_IMAGES[item.id] ? (
+                    <Image
+                      src={SOL_IMAGES[item.id]}
+                      alt={item.t}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="240px"
+                    />
+                  ) : (
+                    <SolIcon id={item.id} />
+                  )}
                 </div>
               </article>
             ))}

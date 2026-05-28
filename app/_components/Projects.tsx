@@ -1,7 +1,19 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
+
+const CASE_IMAGES: Record<string, string> = {
+  "tigre-trafico":   "/images/proyectos/smart-city/trafico.png",
+  "tigre-hidrico":   "/images/proyectos/smart-city/hidrico.png",
+  "omint-codeblue":  "/images/proyectos/salud/optimizacion.png",
+  "omint-env":       "/images/proyectos/salud/control.png",
+  renault:           "/images/proyectos/industria/modernizacion.png",
+  bromteck:          "/images/proyectos/industria/monitoreo.png",
+  "lomas-escuelas":  "/images/proyectos/seguridad/proteccion.png",
+  ituzaingo:         "/images/proyectos/seguridad/fortalecimiento.png",
+};
 
 function boldify(text: string) {
   const parts: React.ReactNode[] = [];
@@ -310,7 +322,23 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
-                <CaseVisual code={cs.code} />
+                {CASE_IMAGES[cs.code] ? (
+                  <div style={{
+                    position: "relative", aspectRatio: "1 / 1.05",
+                    borderRadius: 16, overflow: "hidden",
+                    background: "var(--bg-soft)",
+                  }}>
+                    <Image
+                      src={CASE_IMAGES[cs.code]}
+                      alt={cs.h}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="300px"
+                    />
+                  </div>
+                ) : (
+                  <CaseVisual code={cs.code} />
+                )}
               </article>
             ))}
           </div>
