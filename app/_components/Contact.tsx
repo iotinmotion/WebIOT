@@ -4,16 +4,37 @@ import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 
 export default function Contact() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const ref = useReveal();
   const [form, setForm] = useState({ email: "", subject: "", area: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4500);
-    setForm({ email: "", subject: "", area: "", message: "" });
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email,
+          subject: form.subject,
+          interes: form.area,
+          message: form.message,
+          locale: lang,
+          origen: "Formulario de contacto",
+        }),
+      });
+      if (res.ok) {
+        setStatus("ok");
+        setForm({ email: "", subject: "", area: "", message: "" });
+        setTimeout(() => setStatus("idle"), 6000);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   const labelStyle: React.CSSProperties = {
@@ -185,22 +206,33 @@ export default function Contact() {
 
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginTop: 8 }}>
                 <span style={{ fontSize: 12, color: "var(--ink-faint)" }}>{t.contact.privacy}</span>
-                <button type="submit" className="btn btn-primary" style={{ background: "var(--brand-blue-deep)" }}>
-                  {t.contact.send} <span>→</span>
+                <button type="submit" disabled={status === "sending"} className="btn btn-primary" style={{ background: "var(--brand-blue-deep)", opacity: status === "sending" ? 0.7 : 1 }}>
+                  {status === "sending" ? "…" : <>{t.contact.send} <span>→</span></>}
                 </button>
               </div>
 
-              {sent && (
+              {status === "ok" && (
                 <div style={{
                   marginTop: 14, padding: "12px 14px",
                   background: "color-mix(in oklab, var(--brand-teal) 22%, transparent)",
                   border: "1px solid var(--brand-teal)",
-                  borderRadius: 10,
-                  color: "var(--brand-blue-deep)",
+                  borderRadius: 10, color: "var(--brand-blue-deep)",
                   fontSize: 13.5,
                   fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
                 }}>
                   ✓ {t.contact.sent}
+                </div>
+              )}
+              {status === "error" && (
+                <div style={{
+                  marginTop: 14, padding: "12px 14px",
+                  background: "color-mix(in oklab, var(--brand-orange) 12%, transparent)",
+                  border: "1px solid var(--brand-orange)",
+                  borderRadius: 10, color: "var(--brand-orange)",
+                  fontSize: 13.5,
+                  fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
+                }}>
+                  ✗ {lang === "es" ? "Hubo un error. Intentá de nuevo." : "Something went wrong. Please try again."}
                 </div>
               )}
             </form>

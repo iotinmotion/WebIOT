@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
+import PdfModal from "./PdfModal";
 
 function SolIcon({ id }: { id: string }) {
   const paths: Record<string, React.ReactNode> = {
@@ -30,12 +31,15 @@ function SolIcon({ id }: { id: string }) {
   );
 }
 
+interface PdfTarget { pdf: string; solucion: string; categoria: string; }
+
 export default function Solutions() {
   const { t } = useLang();
   const ref = useReveal();
   const cats = t.solutions.categories;
   const [active, setActive] = useState(cats[0].id);
   const cur = cats.find((c) => c.id === active)!;
+  const [pdfTarget, setPdfTarget] = useState<PdfTarget | null>(null);;
 
   return (
     <section id="solutions" ref={ref}>
@@ -171,10 +175,11 @@ export default function Solutions() {
                       {t.solutions.moreInfo}
                     </a>
                     {item.pdf && (
-                      <a href={item.pdf} target="_blank" rel="noopener noreferrer"
-                        style={{ color: "var(--brand-orange)", fontWeight: 900, textDecoration: "underline", textUnderlineOffset: 4, WebkitTextStroke: "0.4px var(--brand-orange)" }}>
+                      <button
+                        onClick={() => setPdfTarget({ pdf: item.pdf!, solucion: item.t, categoria: cur.t })}
+                        style={{ background: "none", border: "none", padding: 0, cursor: "pointer", color: "var(--brand-orange)", fontWeight: 900, textDecoration: "underline", textUnderlineOffset: 4, WebkitTextStroke: "0.4px var(--brand-orange)", fontFamily: "var(--font-geist-mono, ui-monospace, monospace)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase" }}>
                         {t.solutions.downloadPdf}
-                      </a>
+                      </button>
                     )}
                   </div>
                 </div>
@@ -231,6 +236,15 @@ export default function Solutions() {
           </div>
         </div>
       </div>
+
+      {pdfTarget && (
+        <PdfModal
+          pdf={pdfTarget.pdf}
+          solucion={pdfTarget.solucion}
+          categoria={pdfTarget.categoria}
+          onClose={() => setPdfTarget(null)}
+        />
+      )}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 880px) {
