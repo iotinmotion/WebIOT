@@ -164,7 +164,8 @@ export default function News() {
                             fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase",
                             padding: "5px 12px", borderRadius: 999,
                             background: CAT_COLORS[n.catKey] || CAT_COLORS.networks,
-                            color: "var(--brand-blue-deep)", fontWeight: 600,
+                            color: "var(--brand-blue-deep)", fontWeight: 900,
+                            WebkitTextStroke: "0.4px var(--brand-blue-deep)",
                           }}>{pick(n.categoria, lang)}</span>
                           <span style={{
                             fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
@@ -176,10 +177,7 @@ export default function News() {
                           fontSize: 18, fontWeight: 600, letterSpacing: "-0.015em", lineHeight: 1.25,
                           margin: "4px 0 0", color: "var(--brand-blue-deep)",
                         }}>{pick(n.titulo, lang)}</h3>
-                        <p style={{
-                          fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0,
-                          fontWeight: 700, WebkitTextStroke: "0.3px var(--ink-soft)",
-                        }}>
+                        <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0 }}>
                           {pick(n.descripcion, lang)}
                         </p>
                         <a href={n.link || "#"} target={n.link ? "_blank" : undefined} rel="noopener noreferrer" style={{
