@@ -56,7 +56,7 @@ export default function Nav() {
       <div className="shell" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
         {/* Logo */}
         <a href="#home" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <Image src="/logo.png" alt="IOT in Motion" height={36} width={120} style={{ height: 36, width: "auto" }} priority />
+          <Image src="/logo.png" alt="IOT in Motion" height={52} width={180} style={{ height: 52, width: "auto" }} priority />
         </a>
 
         {/* Desktop links */}
