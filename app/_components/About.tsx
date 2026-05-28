@@ -33,7 +33,7 @@ export default function About() {
             position: "relative",
             border: "1px solid var(--line)",
           }}>
-            <Image src="/team.png" alt="IOT in Motion team" fill style={{ objectFit: "cover" }} />
+            <Image src="/team.jpeg" alt="IOT in Motion team" fill style={{ objectFit: "cover" }} />
           </div>
         </div>
       </div>
