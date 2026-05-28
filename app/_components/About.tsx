@@ -18,7 +18,7 @@ export default function About() {
         <div className="about-grid-responsive" style={{
           display: "grid",
           gridTemplateColumns: "1.6fr 1fr",
-          gap: 80, alignItems: "start",
+          gap: 80, alignItems: "center",
         }}>
           <div className="reveal">
             {[t.about.p1, t.about.p2, t.about.p3, t.about.p4].map((p, i) => (
@@ -28,7 +28,7 @@ export default function About() {
           </div>
 
           <div className="reveal" style={{
-            aspectRatio: "4 / 5",
+            aspectRatio: "4 / 3",
             borderRadius: 22, overflow: "hidden",
             position: "relative",
             border: "1px solid var(--line)",
