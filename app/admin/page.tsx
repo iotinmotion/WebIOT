@@ -10,25 +10,31 @@ interface Cliente {
   orden: number;
 }
 
-type Bilingual = string | { es: string; en: string };
-
 interface NewsItem {
   _id: string;
-  titulo: Bilingual;
-  descripcion: Bilingual;
+  titulo: { es: string; en: string };
+  descripcion: { es: string; en: string };
   fecha: string | null;
-  categoria: Bilingual;
+  categoria: { es: string; en: string };
   catKey: string;
   imagenId: string | null;
+  link: string | null;
+}
+
+interface NewsForm {
+  _id?: string;
+  title_es: string;
+  title_en: string;
+  summary_es: string;
+  summary_en: string;
+  category_es: string;
+  category_en: string;
+  date: string;
+  imagenId: string | null;
+  link: string;
 }
 
 /* ─── helpers ────────────────────────────────────────────── */
-function pick(val: Bilingual | undefined, lang: "es" | "en"): string {
-  if (!val) return "";
-  if (typeof val === "string") return val;
-  return val[lang] || val.es || val.en || "";
-}
-
 function adminFetch(url: string, opts: RequestInit = {}) {
   const pw = sessionStorage.getItem("admin_pw") || "";
   return fetch(url, {
@@ -165,33 +171,35 @@ function ClientsTab({ pw }: { pw: string }) {
 
 function NewsTab({ pw }: { pw: string }) {
   const [items, setItems] = useState<NewsItem[]>([]);
-  const [editing, setEditing] = useState<Partial<NewsItem> | null>(null);
+  const [form, setForm] = useState<NewsForm | null>(null);
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
-
-  const catOptions = [
-    { label: "Events", key: "events" },
-    { label: "Exhibition", key: "exhibition" },
-    { label: "Energy", key: "energy" },
-    { label: "Health", key: "health" },
-    { label: "Networks", key: "networks" },
-    { label: "Case Study", key: "case" },
-  ];
 
   function load() {
     fetch("/api/news").then((r) => r.json()).then(setItems);
   }
   useEffect(load, []);
 
-  function newItem() {
-    setEditing({
-      titulo: { es: "", en: "" },
-      descripcion: { es: "", en: "" },
-      fecha: new Date().toISOString().split("T")[0],
-      categoria: { es: "Eventos", en: "Events" },
-      catKey: "events",
-      imagenId: null,
+  function blankForm(): NewsForm {
+    return {
+      title_es: "", title_en: "",
+      summary_es: "", summary_en: "",
+      category_es: "Eventos", category_en: "Events",
+      date: new Date().toISOString().split("T")[0],
+      imagenId: null, link: "",
+    };
+  }
+
+  function openEdit(n: NewsItem) {
+    setForm({
+      _id: n._id,
+      title_es: n.titulo.es, title_en: n.titulo.en,
+      summary_es: n.descripcion.es, summary_en: n.descripcion.en,
+      category_es: n.categoria.es, category_en: n.categoria.en,
+      date: n.fecha ? n.fecha.split("T")[0] : "",
+      imagenId: n.imagenId,
+      link: n.link || "",
     });
     setPreview(null);
   }
@@ -206,19 +214,20 @@ function NewsTab({ pw }: { pw: string }) {
       body: fd,
     });
     const data = await res.json();
-    setEditing((e) => e ? { ...e, imagenId: data.id } : e);
+    setForm((f) => f ? { ...f, imagenId: data.id } : f);
     setPreview(URL.createObjectURL(file));
     setUploading(false);
   }
 
   async function save() {
-    if (!editing) return;
-    if (editing._id) {
-      await adminFetch(`/api/news/${editing._id}`, { method: "PUT", body: JSON.stringify(editing) });
+    if (!form) return;
+    const payload = { ...form };
+    if (form._id) {
+      await adminFetch(`/api/news/${form._id}`, { method: "PUT", body: JSON.stringify(payload) });
     } else {
-      await adminFetch("/api/news", { method: "POST", body: JSON.stringify(editing) });
+      await adminFetch("/api/news", { method: "POST", body: JSON.stringify(payload) });
     }
-    setEditing(null);
+    setForm(null);
     setPreview(null);
     load();
   }
@@ -229,39 +238,35 @@ function NewsTab({ pw }: { pw: string }) {
     load();
   }
 
-  function patchBilingual(field: "titulo" | "descripcion" | "categoria", lang: "es" | "en", val: string) {
-    setEditing((e) => {
-      if (!e) return e;
-      const cur = e[field];
-      const obj = typeof cur === "string" ? { es: cur, en: cur } : { ...(cur || { es: "", en: "" }) };
-      obj[lang] = val;
-      return { ...e, [field]: obj };
-    });
+  function patch(key: keyof NewsForm, val: string) {
+    setForm((f) => f ? { ...f, [key]: val } : f);
   }
 
   return (
     <div>
-      <button onClick={newItem} style={{ ...primaryBtn, marginBottom: 24 }}>+ New item</button>
+      <button onClick={() => { setForm(blankForm()); setPreview(null); }} style={{ ...primaryBtn, marginBottom: 24 }}>
+        + New item
+      </button>
 
       {/* Editor */}
-      {editing && (
+      {form && (
         <div style={{ ...formBox, marginBottom: 24 }}>
-          <h3 style={formTitle}>{editing._id ? "Edit item" : "New item"}</h3>
+          <h3 style={formTitle}>{form._id ? "Edit item" : "New item"}</h3>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             {(["es", "en"] as const).map((l) => (
               <div key={l} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <p style={{ margin: 0, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", color: "var(--brand-blue-deep)", textTransform: "uppercase" }}>{l.toUpperCase()}</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <label style={labelStyle}>Title</label>
-                  <input value={pick(editing.titulo, l)} onChange={(e) => patchBilingual("titulo", l, e.target.value)} style={inputStyle} />
+                  <input value={l === "es" ? form.title_es : form.title_en} onChange={(e) => patch(l === "es" ? "title_es" : "title_en", e.target.value)} style={inputStyle} />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <label style={labelStyle}>Description</label>
-                  <textarea value={pick(editing.descripcion, l)} onChange={(e) => patchBilingual("descripcion", l, e.target.value)} style={{ ...inputStyle, height: 80, resize: "vertical" }} />
+                  <label style={labelStyle}>Summary</label>
+                  <textarea value={l === "es" ? form.summary_es : form.summary_en} onChange={(e) => patch(l === "es" ? "summary_es" : "summary_en", e.target.value)} style={{ ...inputStyle, height: 80, resize: "vertical" as const }} />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <label style={labelStyle}>Category label</label>
-                  <input value={pick(editing.categoria, l)} onChange={(e) => patchBilingual("categoria", l, e.target.value)} style={inputStyle} />
+                  <label style={labelStyle}>Category</label>
+                  <input value={l === "es" ? form.category_es : form.category_en} onChange={(e) => patch(l === "es" ? "category_es" : "category_en", e.target.value)} style={inputStyle} />
                 </div>
               </div>
             ))}
@@ -269,24 +274,22 @@ function NewsTab({ pw }: { pw: string }) {
 
           <div style={{ display: "flex", gap: 14, marginTop: 14, flexWrap: "wrap", alignItems: "flex-end" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <label style={labelStyle}>Category key</label>
-              <select value={editing.catKey || ""} onChange={(e) => setEditing((ed) => ed ? { ...ed, catKey: e.target.value } : ed)} style={inputStyle}>
-                {catOptions.map((o) => <option key={o.key} value={o.key}>{o.label}</option>)}
-              </select>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <label style={labelStyle}>Date</label>
-              <input type="date" value={editing.fecha?.split("T")[0] || ""} onChange={(e) => setEditing((ed) => ed ? { ...ed, fecha: e.target.value } : ed)} style={inputStyle} />
+              <input type="date" value={form.date} onChange={(e) => patch("date", e.target.value)} style={inputStyle} />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1, minWidth: 200 }}>
+              <label style={labelStyle}>Link</label>
+              <input value={form.link} onChange={(e) => patch("link", e.target.value)} placeholder="https://..." style={{ ...inputStyle, width: "100%", boxSizing: "border-box" as const }} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <label style={labelStyle}>Image</label>
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                 <button onClick={() => fileRef.current?.click()} style={secondaryBtn}>
-                  {uploading ? "Uploading…" : preview || editing.imagenId ? "Change" : "Upload image"}
+                  {uploading ? "Uploading…" : preview || form.imagenId ? "Change" : "Upload image"}
                 </button>
-                {(preview || editing.imagenId) && (
+                {(preview || form.imagenId) && (
                   <div style={{ width: 60, height: 38, position: "relative", borderRadius: 6, overflow: "hidden", border: "1px solid var(--line)" }}>
-                    <Image src={preview || `/api/images/${editing.imagenId}`} alt="" fill style={{ objectFit: "cover" }} />
+                    <Image src={preview || `/api/images/${form.imagenId}`} alt="" fill style={{ objectFit: "cover" }} />
                   </div>
                 )}
                 <input ref={fileRef} type="file" accept="image/*" style={{ display: "none" }} onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadImage(f); }} />
@@ -296,7 +299,7 @@ function NewsTab({ pw }: { pw: string }) {
 
           <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
             <button onClick={save} style={primaryBtn}>Save</button>
-            <button onClick={() => { setEditing(null); setPreview(null); }} style={secondaryBtn}>Cancel</button>
+            <button onClick={() => { setForm(null); setPreview(null); }} style={secondaryBtn}>Cancel</button>
           </div>
         </div>
       )}
@@ -313,14 +316,14 @@ function NewsTab({ pw }: { pw: string }) {
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{ margin: 0, fontWeight: 600, fontSize: 14, color: "var(--brand-blue-deep)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {pick(n.titulo, "es")}
+                {n.titulo.es}
               </p>
               <p style={{ margin: "2px 0 0", fontSize: 12, color: "var(--ink-faint)" }}>
                 {n.catKey} · {n.fecha ? new Date(n.fecha).toLocaleDateString() : "—"}
               </p>
             </div>
             <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
-              <button onClick={() => { setEditing(n); setPreview(null); }} style={secondaryBtn}>Edit</button>
+              <button onClick={() => openEdit(n)} style={secondaryBtn}>Edit</button>
               <button onClick={() => del(n._id)} style={{ ...secondaryBtn, color: "#c0392b" }}>Delete</button>
             </div>
           </div>

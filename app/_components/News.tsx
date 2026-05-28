@@ -14,6 +14,7 @@ interface NewsItem {
   categoria: Bilingual;
   catKey: string;
   imagenId: string | null;
+  link: string | null;
 }
 
 function pick(val: Bilingual | undefined, lang: "es" | "en"): string {
@@ -178,7 +179,7 @@ export default function News() {
                         <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0 }}>
                           {pick(n.descripcion, lang)}
                         </p>
-                        <a href="#" onClick={(e) => e.preventDefault()} style={{
+                        <a href={n.link || "#"} target={n.link ? "_blank" : undefined} rel="noopener noreferrer" style={{
                           marginTop: "auto", paddingTop: 14,
                           borderTop: "1px solid var(--line)",
                           fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",

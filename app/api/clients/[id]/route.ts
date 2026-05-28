@@ -14,7 +14,9 @@ export async function PUT(
   try {
     const db = await getDb();
     const body = await req.json();
-    if (body.logoId) body.logoId = new ObjectId(body.logoId);
+    if (body.logoId) { body.image = new ObjectId(body.logoId); delete body.logoId; }
+    if (body.orden !== undefined) { body.order = body.orden; delete body.orden; }
+    body.updatedAt = new Date();
     await db
       .collection("clientes")
       .updateOne({ _id: new ObjectId(params.id) }, { $set: body });

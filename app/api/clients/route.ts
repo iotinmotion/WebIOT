@@ -11,20 +11,16 @@ export async function GET() {
     const db = await getDb();
     const docs = await db
       .collection("clientes")
-      .find({ activo: { $ne: false } })
-      .sort({ orden: 1, _id: 1 })
+      .find({})
+      .sort({ order: 1, _id: 1 })
       .toArray();
 
     return NextResponse.json(
       docs.map((c) => ({
         _id: c._id.toString(),
-        nombre: c.nombre || c.name || "",
-        logoId:
-          c.logoId?.toString() ||
-          c.logo?.toString() ||
-          c.imagen?.toString() ||
-          null,
-        orden: c.orden ?? 0,
+        nombre: c.name || c.nombre || "",
+        logoId: c.image?.toString() || c.logoId?.toString() || null,
+        orden: c.order ?? c.orden ?? 0,
       }))
     );
   } catch {
@@ -38,10 +34,11 @@ export async function POST(req: NextRequest) {
     const db = await getDb();
     const body = await req.json();
     const result = await db.collection("clientes").insertOne({
-      nombre: body.nombre,
-      logoId: body.logoId ? new ObjectId(body.logoId) : null,
-      orden: body.orden ?? 999,
-      activo: true,
+      name: body.nombre,
+      image: body.logoId ? new ObjectId(body.logoId) : null,
+      order: body.orden ?? 999,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
     return NextResponse.json({ _id: result.insertedId.toString() });
   } catch {

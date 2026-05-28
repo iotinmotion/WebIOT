@@ -14,11 +14,21 @@ export async function PUT(
   try {
     const db = await getDb();
     const body = await req.json();
-    if (body.imagenId) body.imagenId = new ObjectId(body.imagenId);
-    if (body.fecha) body.fecha = new Date(body.fecha);
+    const update: Record<string, unknown> = {
+      title_es: body.title_es,
+      title_en: body.title_en,
+      summary_es: body.summary_es,
+      summary_en: body.summary_en,
+      category_es: body.category_es,
+      category_en: body.category_en,
+      link: body.link ?? "",
+      updatedAt: new Date(),
+    };
+    if (body.date) update.date = new Date(body.date);
+    if (body.imagenId) update.images = [new ObjectId(body.imagenId)];
     await db
       .collection("novedades")
-      .updateOne({ _id: new ObjectId(params.id) }, { $set: body });
+      .updateOne({ _id: new ObjectId(params.id) }, { $set: update });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "DB error" }, { status: 500 });
