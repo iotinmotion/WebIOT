@@ -164,8 +164,8 @@ export default function News() {
                             fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase",
                             padding: "5px 12px", borderRadius: 999,
                             background: CAT_COLORS[n.catKey] || CAT_COLORS.networks,
-                            color: "var(--brand-blue-deep)", fontWeight: 900,
-                            WebkitTextStroke: "0.4px var(--brand-blue-deep)",
+                            color: "var(--brand-blue-deep)", fontWeight: 800,
+                            WebkitTextStroke: "0.2px var(--brand-blue-deep)",
                           }}>{pick(n.categoria, lang)}</span>
                           <span style={{
                             fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
