@@ -3,23 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 
-const TABLE_ROWS = [
-  { id: "TIGRE_412", st: "OK", val: 87, alert: false },
-  { id: "PILAR_109", st: "OK", val: 64, alert: false },
-  { id: "AYSAM_804", st: "ALERT", val: 12, alert: true },
-  { id: "ENEL_2207", st: "OK", val: 91, alert: false },
-  { id: "LMZAM_55", st: "OK", val: 73, alert: false },
-  { id: "ITUZA_18", st: "OK", val: 58, alert: false },
-];
-
-const MAP_PINS = [
-  { x: 28, y: 38, alert: false }, { x: 42, y: 30, alert: false },
-  { x: 36, y: 50, alert: true }, { x: 52, y: 44, alert: false },
-  { x: 64, y: 36, alert: false }, { x: 58, y: 60, alert: false },
-  { x: 70, y: 52, alert: false }, { x: 46, y: 62, alert: false },
-  { x: 30, y: 70, alert: false }, { x: 78, y: 70, alert: false },
-];
-
 function CountUp({ target = 22300, duration = 2400 }) {
   const [val, setVal] = useState(0);
   const [started, setStarted] = useState(false);
@@ -53,94 +36,6 @@ function CountUp({ target = 22300, duration = 2400 }) {
   return <span ref={elRef}>{val.toLocaleString("en-US")}</span>;
 }
 
-function PlatformDashboard() {
-  const [tick, setTick] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setTick((t) => t + 1), 1500);
-    return () => clearInterval(id);
-  }, []);
-
-  return (
-    <div className="platform-mock">
-      {/* Toolbar */}
-      <div style={{
-        gridColumn: "1 / -1",
-        display: "flex", alignItems: "center", gap: 8,
-        padding: "10px 14px",
-        borderBottom: "1px solid var(--line)",
-        background: "var(--bg-soft)",
-      }}>
-        {["#FF5F57", "#FEBC2E", "#28C840"].map((c, i) => (
-          <span key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />
-        ))}
-        <span style={{
-          marginLeft: 10,
-          fontFamily: "var(--font-geist-mono, ui-monospace, monospace)",
-          fontSize: 11, color: "var(--ink-faint)", letterSpacing: "0.05em",
-        }}>
-          sim.iotinmotion.com.ar/dashboard
-        </span>
-      </div>
-
-      {/* Table */}
-      <div style={{ borderRight: "1px solid var(--line)", fontFamily: "var(--font-geist-mono, ui-monospace, monospace)", fontSize: 11 }}>
-        <div style={{
-          display: "grid", gridTemplateColumns: "1.4fr 0.7fr 0.7fr 0.7fr 0.9fr",
-          gap: 8, padding: "10px 14px",
-          borderBottom: "1px solid var(--line)",
-          background: "var(--bg-soft)",
-          fontSize: "9.5px", letterSpacing: "0.14em", textTransform: "uppercase",
-          color: "var(--ink-faint)",
-        }}>
-          <span>SENSOR ID</span><span>STATE</span><span>VAL</span><span>BAT</span><span>LAST</span>
-        </div>
-        {TABLE_ROWS.map((r, i) => (
-          <div key={r.id} style={{
-            display: "grid", gridTemplateColumns: "1.4fr 0.7fr 0.7fr 0.7fr 0.9fr",
-            gap: 8, padding: "10px 14px",
-            borderBottom: "1px solid var(--line)",
-            alignItems: "center",
-          }}>
-            <span style={{ color: "var(--brand-blue-deep)", fontWeight: 500 }}>{r.id}</span>
-            <span style={{ color: r.alert ? "var(--brand-orange)" : "var(--brand-blue-mid)", fontWeight: r.alert ? 600 : 400 }}>{r.st}</span>
-            <span>{(r.val + ((tick + i) % 4) - 2).toString().padStart(2, "0")}</span>
-            <span>{98 - i * 3}%</span>
-            <span style={{ color: "var(--ink-faint)" }}>{i * 3 + (tick % 5)}s</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Map */}
-      <div style={{
-        position: "relative",
-        background: "linear-gradient(180deg, oklch(0.96 0.015 230) 0%, oklch(0.92 0.025 220) 100%)",
-        minHeight: 280,
-        overflow: "hidden",
-      }}>
-        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="mapgrid" width="6" height="6" patternUnits="userSpaceOnUse">
-              <path d="M 6 0 L 0 0 0 6" fill="none" stroke="rgba(43,71,134,0.08)" strokeWidth="0.2" />
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#mapgrid)" />
-          <path d="M 0 25 Q 20 35, 35 30 T 65 35 Q 85 40, 100 30 L 100 50 Q 80 55, 60 50 T 25 55 Q 10 60, 0 55 Z" fill="rgba(130,194,201,0.18)" />
-          <path d="M 5 70 L 90 65" stroke="rgba(43,71,134,0.2)" strokeWidth="0.5" fill="none" />
-          <path d="M 20 10 L 30 90" stroke="rgba(43,71,134,0.15)" strokeWidth="0.4" fill="none" />
-          <path d="M 60 10 L 75 90" stroke="rgba(43,71,134,0.15)" strokeWidth="0.4" fill="none" />
-          {MAP_PINS.map((p, i) => (
-            <g key={i}>
-              <circle cx={p.x} cy={p.y} r="2.5" fill={p.alert ? "rgba(227,76,44,0.25)" : "rgba(130,194,201,0.3)"}>
-                {p.alert && <animate attributeName="r" values="1.8;3.5;1.8" dur="1.6s" repeatCount="indefinite" />}
-              </circle>
-              <circle cx={p.x} cy={p.y} r="1" fill={p.alert ? "#E34C2C" : "#476098"} stroke="white" strokeWidth="0.2" />
-            </g>
-          ))}
-        </svg>
-      </div>
-    </div>
-  );
-}
 
 export default function Platform() {
   const { t } = useLang();
@@ -202,7 +97,14 @@ export default function Platform() {
           </div>
 
           <div className="reveal">
-            <PlatformDashboard />
+            <video
+              src="/plataforma-sim.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: "100%", borderRadius: 12, display: "block" }}
+            />
           </div>
         </div>
 
