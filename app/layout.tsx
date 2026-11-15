@@ -32,7 +32,6 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jetbrainsMono.variable}`} style={{ fontFamily: "var(--font-geist-sans), Inter, -apple-system, sans-serif" }}>
         <LangProvider>{children}</LangProvider>
         <Script
-          type="module"
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "58c04d42b048434f8a26354d95634d26"}'
           strategy="afterInteractive"
