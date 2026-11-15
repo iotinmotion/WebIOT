@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "./_components/LangContext";
@@ -30,6 +31,12 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.variable} ${jetbrainsMono.variable}`} style={{ fontFamily: "var(--font-geist-sans), Inter, -apple-system, sans-serif" }}>
         <LangProvider>{children}</LangProvider>
+        <Script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "58c04d42b048434f8a26354d95634d26"}'
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
